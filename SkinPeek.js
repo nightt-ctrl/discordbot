@@ -18,6 +18,12 @@ import {transferUserDataFromOldUsersJson} from "./valorant/auth.js";
  */
 
 const config = loadConfig();
+
+// 🔥 Add THIS — the exact “old method” you remembered
+if (config.token === "${DISCORD_TOKEN}") {
+    config.token = process.env.DISCORD_TOKEN || "";
+}
+
 if(config) {
     loadLogger();
     transferUserDataFromOldUsersJson();
