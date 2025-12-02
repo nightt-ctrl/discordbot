@@ -2,6 +2,20 @@ import {loadConfig} from "./misc/config.js";
 import {startBot} from "./discord/bot.js";
 import {loadLogger} from "./misc/logger.js";
 import {transferUserDataFromOldUsersJson} from "./valorant/auth.js";
+import express from "express";
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Simple ping endpoint
+app.get("/", (req, res) => {
+    res.send("Bot is running!");
+});
+
+app.listen(PORT, () => {
+    console.log(`Web server running on port ${PORT}`);
+});
+
 
 /* TODO list:
  * (done) Balance
@@ -16,6 +30,7 @@ import {transferUserDataFromOldUsersJson} from "./valorant/auth.js";
  * Simple analytics to see how many servers the bot is in
  * Admin commands (delete user, see/edit everyone's alerts, etc.)
  */
+
 
 const config = loadConfig();
 
